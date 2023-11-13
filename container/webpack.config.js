@@ -32,6 +32,7 @@ module.exports = {
       remotes: {
         smarthome: 'smarthome@http://localhost:3001/remoteEntry.js',
         welcomePage: 'welcomePage@http://localhost:3002/remoteEntry.js',
+        todo: "todo@http://localhost:3003/remoteEntry.js"
       },
     }),
     new HtmlWebpackPlugin({

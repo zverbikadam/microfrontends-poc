@@ -1,4 +1,6 @@
 const { VueLoaderPlugin } = require("vue-loader");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const path = require("path");
 
 module.exports = {
@@ -25,5 +27,23 @@ module.exports = {
       },
     ],
   },
-  plugins: [new VueLoaderPlugin()],
+  plugins: [
+    new VueLoaderPlugin(),
+    new ModuleFederationPlugin({
+      name: "todo",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./TodoApp": "./src/bootstrap",
+      },
+    }),
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+    }),
+  ],
+  devServer: {
+    port: 3003,
+    historyApiFallback: {
+      index: 'index.html',
+    },
+  },
 };

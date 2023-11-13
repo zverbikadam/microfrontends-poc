@@ -16,7 +16,8 @@ const Sidebar = (props: Props) => {
       fixedItems={getFixedItems()}
     >
       <SideNavigationItem icon="home" text="Smart Home Dashboard" selected />
-      <SideNavigationItem text="To Do Items" icon="activity-items" />
+      <SideNavigationItem text="To Do Items" icon="multiselect-all" />
+      <SideNavigationItem text="All Together" icon="activity-items" />
     </SideNavigation>
   );
 };

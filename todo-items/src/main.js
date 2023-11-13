@@ -1,5 +1,3 @@
-import { createApp } from "vue";
-import App from "./App";
+import("./bootstrap");
 
-createApp(App).mount('#app')
-
+export {};
