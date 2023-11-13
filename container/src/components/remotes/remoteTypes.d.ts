@@ -6,3 +6,7 @@ declare module 'smarthome/SmartHomeApp' {
 declare module 'welcomePage/WelcomePageApp' {
   export function mount(htmlElement: HTMLElement | null): void;
 }
+
+declare module 'shoppingList/ShoppingListApp' {
+  export function mount(htmlElement: HTMLElement | null): void;
+}

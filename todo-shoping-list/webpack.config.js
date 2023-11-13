@@ -5,14 +5,14 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.ts', // Change this to your entry TypeScript file
+  entry: './src/index.ts',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
-  },
+},
   module: {
     rules: [
       {
@@ -20,28 +20,23 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'ts-loader',
       },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
     ],
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'container',
-      remotes: {
-        smarthome: 'smarthome@http://localhost:3001/remoteEntry.js',
-        welcomePage: 'welcomePage@http://localhost:3002/remoteEntry.js',
-        shoppingList: "shoppingList@http://localhost:3003/remoteEntry.js"
-      },
-    }),
+      name: "shoppingList",
+      filename: "remoteEntry.js",
+      exposes: {
+       "./ShoppingListApp": "./src/bootstrap"
+      }
+   }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
     new CleanWebpackPlugin(),
   ],
   devServer: {
-    port: 3000,
+    port: 3003,
     historyApiFallback: {
       index: 'index.html',
     },

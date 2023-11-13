@@ -7,6 +7,7 @@ import Header from './components/header/Header';
 import SmartHome from './components/remotes/SmartHome';
 import WelcomePage from './components/remotes/WelcomePage';
 import Sidebar from './components/sidebar/Sidebar';
+import ShoppingList from './components/remotes/ShoppingList';
 
 function App() {
   const [isOpen, setIsOpen] = useState(true);
