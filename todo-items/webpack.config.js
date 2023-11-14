@@ -6,7 +6,7 @@ const path = require("path");
 module.exports = {
   mode: "development",
 
-  entry: "./src/main.js",
+  entry: "./src/main.ts",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
@@ -20,6 +20,16 @@ module.exports = {
         test: /\.(js)$/,
         exclude: /node_modules/,
         loader: "babel-loader",
+      },
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'ts-loader',
+          options: {
+            appendTsSuffixTo: [/\.vue$/],
+          },
+        },
       },
       {
         test: /\.vue$/,

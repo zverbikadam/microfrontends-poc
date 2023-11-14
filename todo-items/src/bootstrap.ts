@@ -1,7 +1,7 @@
 import { createApp } from "vue";
-import App from "./App";
+import App from "./App.vue";
 
-const mount = (htmlElement) => {
+const mount = (htmlElement: HTMLElement) => {
   createApp(App).mount(htmlElement);
 };
 
