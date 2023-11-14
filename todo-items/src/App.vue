@@ -1,18 +1,9 @@
+<script setup lang="ts">
+import AddTodoForm from "./components/AddTodoForm.vue";
+</script>
+
 <template>
   <div>
-    <button @click="onClick">Click Me</button>
-    <div>{{counter}}</div>
+    <AddTodoForm />
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue';
-
-
-const counter = ref(0);
-
-function onClick(event: MouseEvent) {
-  counter.value++;
-  console.log("Hello");
-}
-</script>

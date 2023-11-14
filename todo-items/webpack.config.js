@@ -27,6 +27,11 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: "vue-loader",
+        options: {
+          compilerOptions: {
+            isCustomElement: (tag) => tag.includes("ui5-"),
+          },
+        },
       },
     ],
   },
@@ -46,7 +51,7 @@ module.exports = {
   devServer: {
     port: 3003,
     historyApiFallback: {
-      index: 'index.html',
+      index: "index.html",
     },
   },
 };
