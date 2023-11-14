@@ -12,16 +12,16 @@ module.exports = {
     filename: "bundle.js",
   },
   resolve: {
-    extensions: [".js", ".ts", ".vue", ".json"],
+    extensions: [".js", ".ts", "jsx", "tsx", ".vue", ".json"],
   },
   module: {
     rules: [
       {
-        test: /\.(j|t)s$/,
+        test: /\.(j|t)sx?$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
+        loader: "ts-loader",
         options: {
-          presets: ['@babel/preset-env', '@babel/preset-typescript'],
+          appendTsSuffixTo: [/\.vue$/],
         },
       },
       {
