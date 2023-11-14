@@ -17,18 +17,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js)$/,
+        test: /\.(j|t)s$/,
         exclude: /node_modules/,
         loader: "babel-loader",
-      },
-      {
-        test: /\.ts$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'ts-loader',
-          options: {
-            appendTsSuffixTo: [/\.vue$/],
-          },
+        options: {
+          presets: ['@babel/preset-env', '@babel/preset-typescript'],
         },
       },
       {
