@@ -1,5 +1,4 @@
-import { ShellBar, StandardListItem, Avatar, Input, Icon, ShellBarItem } from '@ui5/webcomponents-react'
-import React from 'react'
+import { Avatar, Icon, Input, ShellBar, ShellBarItem, StandardListItem } from '@ui5/webcomponents-react'
 
 type Props = {}
 
