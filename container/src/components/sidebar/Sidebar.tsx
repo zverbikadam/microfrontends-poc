@@ -1,11 +1,17 @@
-import { SideNavigation, SideNavigationItem, SideNavigationItemDomRef, Ui5CustomEvent } from "@ui5/webcomponents-react";
+import {
+  SideNavigation,
+  SideNavigationItem,
+  SideNavigationItemDomRef,
+  Ui5CustomEvent,
+} from "@ui5/webcomponents-react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
 const Sidebar = (props: Props) => {
-
   const navigate = useNavigate();
+  const [currentPath, setCurrentPath] = useState("");
 
   const getFixedItems = (): JSX.Element => {
     return (
@@ -15,18 +21,41 @@ const Sidebar = (props: Props) => {
     );
   };
 
-  const handleClick = (event: Ui5CustomEvent<SideNavigationItemDomRef>, path: string) => {
+  useEffect(() => {
+    setCurrentPath(window.location.pathname);
+  }, []);
+
+  const handleClick = (
+    event: Ui5CustomEvent<SideNavigationItemDomRef>,
+    path: string
+  ) => {
     navigate(path);
-  }
+    setCurrentPath(path);
+  };
 
   return (
     <SideNavigation
       style={{ marginRight: "1rem", height: "30rem", width: "20rem" }}
       fixedItems={getFixedItems()}
     >
-      <SideNavigationItem icon="home" text="Smart Home Dashboard" selected onClick={(e) => handleClick(e, "/")} />
-      <SideNavigationItem text="To Do Items" icon="multiselect-all" onClick={(e) => handleClick(e, "/todo")} />
-      <SideNavigationItem text="All Together" icon="activity-items" onClick={(e) => handleClick(e, "/combined")} />
+      <SideNavigationItem
+        text="To Do Items"
+        icon="multiselect-all"
+        selected={currentPath === "/todo"}
+        onClick={(e) => handleClick(e, "/todo")}
+      />
+      <SideNavigationItem
+        icon="home"
+        text="Smart Home Dashboard"
+        selected={currentPath === "/smarthome"}
+        onClick={(e) => handleClick(e, "/smarthome")}
+      />
+      <SideNavigationItem
+        text="All Together"
+        icon="activity-items"
+        selected={currentPath === "/combined"}
+        onClick={(e) => handleClick(e, "/combined")}
+      />
     </SideNavigation>
   );
 };

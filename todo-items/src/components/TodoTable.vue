@@ -54,30 +54,28 @@ const onDeleteClick = (id: number) => {
   const index = todos.findIndex((t) => t.id === id);
   todos.splice(index, 1);
 };
-
 </script>
 
 <template>
   <div>
-    <div>
-      <ui5-input
-        :value="todo"
-        @input="onItemChange"
-        placeholder="Enter new Item"
-      />
-      <ui5-button @click="onAddClick">Add</ui5-button>
-      <ui5-label>Show Watched</ui5-label>
-      <ui5-switch :value="showCompleted" @change="onSwitchChange" />
-
-    </div>
+    <form>
+      <div>
+        <ui5-input
+          :value="todo"
+          @input="onItemChange"
+          placeholder="Enter new Item"
+        />
+        <ui5-button @click="onAddClick">Add</ui5-button>
+      </div>
+      <ui5-label>Show Watched:</ui5-label>
+      <ui5-switch type="checkbox" v-model="showCompleted" />
+    </form>
     <div>
       <ui5-table>
         <ui5-table-row v-for="todo in filteredTodos" :key="todo.id">
           <ui5-table-cell>
             <span>
-              <input type="checkbox"
-                v-model="todo.completed"
-              />
+              <input type="checkbox" v-model="todo.completed" />
             </span>
             <span>{{ todo.name }}</span>
           </ui5-table-cell>
@@ -90,7 +88,8 @@ const onDeleteClick = (id: number) => {
           </ui5-table-cell>
         </ui5-table-row>
         <ui5-table-column slot="columns">
-          <span>Todo Items</span>
+          <span v-if="!showCompleted">Todo Items</span>
+          <span v-else>Completed Items</span>
         </ui5-table-column>
         <ui5-table-column slot="columns">
           <span>Operation</span>

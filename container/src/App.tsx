@@ -8,7 +8,7 @@ import {
 } from "@ui5/webcomponents-react";
 import '@ui5/webcomponents-react/dist/Assets';
 import { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Combined from "./components/combined/Combined";
 import Header from "./components/header/Header";
@@ -49,10 +49,10 @@ function App() {
           <FlexBox style={{ marginTop: "1rem", height: "35rem" }}>
             <Sidebar />
             <Routes>
-              <Route path="/" element={<SmartHome />} />
               <Route path="/todo" element={<Todo />} />
+              <Route path="/smarthome" element={<SmartHome />} />
               <Route path="/combined" element={<Combined />} />
-              {/* <Route path="/" element={<Navigate to={"/smarthome"} />} /> */}
+              <Route path="/" element={<Navigate to={"/todo"} />} />
             </Routes>
           </FlexBox>
         </div>

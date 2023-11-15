@@ -6,14 +6,14 @@ type Props = {}
 
 const Combined = (props: Props) => {
     return (
-        <>
+        <div>
             <div>
                 <SmartHome />
             </div>
             <div>
                 <Todo />
             </div>
-        </>
+        </div>
     )
 }
 
