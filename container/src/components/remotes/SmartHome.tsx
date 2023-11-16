@@ -7,7 +7,11 @@ const SmartHome = (props: Props) => {
     const ref = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
-        mount(ref.current!);
+        mount(ref.current!, {
+            onNavigate: () => {
+                console.log("The container noticed navigation");
+            }
+        });
     })
 
     return (

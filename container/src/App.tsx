@@ -8,7 +8,7 @@ import {
 } from "@ui5/webcomponents-react";
 import '@ui5/webcomponents-react/dist/Assets';
 import { useEffect, useState } from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import Combined from "./components/combined/Combined";
 import Header from "./components/header/Header";
@@ -19,13 +19,17 @@ import Sidebar from "./components/sidebar/Sidebar";
 
 function App() {
   const [isOpen, setIsOpen] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setTheme("sap_horizon");
+    if (window.location.pathname === "/") {
+      navigate("/todo");
+    }
   })
 
   return (
-    <BrowserRouter>
+    <>
       <Dialog
         className="footerPartNoPadding"
         open={isOpen}
@@ -52,12 +56,11 @@ function App() {
               <Route path="/todo" element={<Todo />} />
               <Route path="/smarthome" element={<SmartHome />} />
               <Route path="/combined" element={<Combined />} />
-              <Route path="/" element={<Navigate to={"/todo"} />} />
             </Routes>
           </FlexBox>
         </div>
       </DynamicPage>
-    </BrowserRouter>
+    </>
   );
 }
 

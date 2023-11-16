@@ -5,7 +5,6 @@ import {
   List,
   StandardListItem,
 } from "@ui5/webcomponents-react";
-import React from "react";
 
 type Props = {
   data: {

@@ -26,7 +26,6 @@ const showCompleted = ref(false);
 
 const onItemChange = (event: CustomEvent) => {
   todo.value = (event.target as HTMLInputElement).value;
-  // todo.value = (event.target as HTMLInputElement).value;
 };
 
 const onAddClick = () => {
@@ -38,10 +37,6 @@ const onAddClick = () => {
     });
     todo.value = "";
   }
-};
-
-const onSwitchChange = (event: CustomEvent) => {
-  showCompleted.value = !showCompleted.value;
 };
 
 const filteredTodos = computed(() => {

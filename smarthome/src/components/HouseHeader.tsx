@@ -1,12 +1,16 @@
-import { Card, CardHeader, Form, FormItem, Text } from '@ui5/webcomponents-react'
+import { Card, CardHeader, Form, FormItem, Link, Text } from '@ui5/webcomponents-react'
 
-type Props = {}
+type Props = {
+    name: string,
+}
 
-const Details = (props: Props) => {
+const HouseHeader = ({ name }: Props) => {
 
     const getCardHeader = (): JSX.Element => {
         return (
-            <CardHeader titleText="Details" />
+            <>
+                <CardHeader titleText="Details"></CardHeader>
+            </>
         )
     }
 
@@ -32,7 +36,7 @@ const Details = (props: Props) => {
                 }}
             >
                 <FormItem label="Name">
-                    <Text>My Main House</Text>
+                    <Text>My {name} House</Text>
                 </FormItem>
                 <FormItem label="Location">
                     <Text>Brno</Text>
@@ -54,4 +58,4 @@ const Details = (props: Props) => {
     )
 }
 
-export default Details
+export default HouseHeader

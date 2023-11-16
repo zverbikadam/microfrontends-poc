@@ -12,7 +12,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
-},
+  },
   module: {
     rules: [
       {
@@ -27,9 +27,9 @@ module.exports = {
       name: "welcomePage",
       filename: "remoteEntry.js",
       exposes: {
-       "./WelcomePageApp": "./src/bootstrap"
+        "./WelcomePageApp": "./src/bootstrap"
       }
-   }),
+    }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
