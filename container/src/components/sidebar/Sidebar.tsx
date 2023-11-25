@@ -48,7 +48,7 @@ const Sidebar = (props: Props) => {
         icon="home"
         text="Smart Home Dashboard"
         selected={currentPath === "/smarthome"}
-        onClick={(e) => handleClick(e, "/smarthome/main")}
+        onClick={(e) => handleClick(e, "/smarthome")}
       />
       <SideNavigationItem
         text="All Together"

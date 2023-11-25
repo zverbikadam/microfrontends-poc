@@ -1,19 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { MemoryRouter } from "react-router-dom";
 import App from "./App";
+import CustomRouter from "./components/router/CustomRouter";
+import history from "./components/router/history";
 
 const mount = (
   htmlElement: HTMLElement,
   { onNavigate }: { onNavigate: ((pathname: string) => void) | undefined }
 ) => {
+  history.listen(() => {
+    console.log("aaaaaaaaand also fking heeeeeeeeeere");
+  });
 
   const root = ReactDOM.createRoot(htmlElement);
   root.render(
     <React.StrictMode>
-      <MemoryRouter initialEntries={["/smarthome/main"]}>
-        <App onNavigate={onNavigate} />
-      </MemoryRouter>
+      <CustomRouter history={history}>
+        <App />
+      </CustomRouter>
     </React.StrictMode>
   );
 
@@ -21,8 +25,8 @@ const mount = (
     onParentNavigate(pathname: string) {
       console.log("Smarthome noticed navigation from container:");
       console.log(pathname);
-    }
-  }
+    },
+  };
 };
 
 if (process.env.NODE_ENV === "development") {

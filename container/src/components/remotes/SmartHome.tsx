@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { mount } from "smarthome/SmartHomeApp";
+import history from "../router/history";
 
 type Props = {};
 
@@ -18,13 +19,13 @@ const SmartHome = (props: Props) => {
       onNavigate: (pathname: string) => {
         console.log("Container noticed navigation for location:");
         console.log(location);
-        if (location.pathname !== pathname) {
-          navigate(pathname);
-        }
       },
     });
     
-    navigateCallback("somepath");
+    history.listen(()=>{
+      console.log("I am fucking heeeeeere")
+    })
+    // navigateCallback("somepath");
     
   }, []);
 

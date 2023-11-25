@@ -1,27 +1,25 @@
-import { Avatar, Icon, Input, ShellBar, ShellBarItem, StandardListItem } from '@ui5/webcomponents-react'
+import {
+    Avatar,
+    Icon,
+    ShellBar,
+    ShellBarItem
+} from "@ui5/webcomponents-react";
 
-type Props = {}
+type Props = {};
 
 const Header = (props: Props) => {
-    return (
-        <ShellBar
-            logo={<img alt="SAP Logo" src="https://sap.github.io/ui5-webcomponents/assets/images/sap-logo-svg.svg" />}
-            menuItems={<><StandardListItem data-key="1">Menu Item 1</StandardListItem></>}
-            primaryTitle="Demo PoC"
-            profile={<Avatar><Icon name='person-placeholder' /></Avatar>}
-            searchField={<Input icon={<Icon interactive name="search" />} showClearIcon />}
-            showProductSwitch
-        >
-            <ShellBarItem
-                icon="question-mark"
-                text="question"
-            />
-            <ShellBarItem
-                icon="bell"
-                text="bell"
-            />
-        </ShellBar>
-    )
-}
+  return (
+    <ShellBar
+      primaryTitle="Micro Frontends demo"
+      profile={
+        <Avatar>
+          <Icon name="person-placeholder" />
+        </Avatar>
+      }
+    >
+      <ShellBarItem icon="question-mark" text="question" />
+    </ShellBar>
+  );
+};
 
-export default Header
+export default Header;
