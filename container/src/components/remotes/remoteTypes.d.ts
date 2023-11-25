@@ -1,7 +1,7 @@
 // This tells TypeScript that the 'smarthome/SmartHomeApp' module exports a 'mount' function.
 declare module 'smarthome/SmartHomeApp' {
   export function mount(htmlElement: HTMLElement, callbacks: {
-    onNavigate: () => void
+    onNavigate: (location:string) => void
   }): void;
 }
 

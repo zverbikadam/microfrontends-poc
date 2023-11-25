@@ -1,22 +1,17 @@
-import { createMemoryHistory } from "history";
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Router } from 'react-router-dom';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import { MemoryRouter } from "react-router-dom";
+import App from "./App";
 
-const mount = (htmlElement: HTMLElement, { onNavigate }: { onNavigate: () => void }) => {
-
-  const history = createMemoryHistory();
-
-  history.listen(() => { 
-    onNavigate();
-   });
-
+const mount = (
+  htmlElement: HTMLElement,
+  { onNavigate }: { onNavigate: ((pathname: string) => void) | undefined }
+) => {
   ReactDOM.render(
     <React.StrictMode>
-      <Router location={history.location} navigator={history} >
-        <App />
-      </Router >
+      <MemoryRouter initialEntries={["/smarthome/main"]}>
+        <App onNavigate={onNavigate} />
+      </MemoryRouter>
     </React.StrictMode>,
     htmlElement
   );
@@ -25,7 +20,7 @@ const mount = (htmlElement: HTMLElement, { onNavigate }: { onNavigate: () => voi
 if (process.env.NODE_ENV === "development") {
   const devRoot = document.getElementById("dev-smarthome");
   if (devRoot) {
-    mount(devRoot, { onNavigate: () => { } });
+    mount(devRoot, { onNavigate: undefined });
   }
 }
 

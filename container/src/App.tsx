@@ -23,9 +23,6 @@ function App() {
 
   useEffect(() => {
     setTheme("sap_horizon");
-    if (window.location.pathname === "/") {
-      navigate("/todo");
-    }
   })
 
   return (
@@ -53,9 +50,9 @@ function App() {
           <FlexBox style={{ marginTop: "1rem", height: "35rem" }}>
             <Sidebar />
             <Routes>
-              <Route path="/todo" element={<Todo />} />
-              <Route path="/smarthome" element={<SmartHome />} />
-              <Route path="/combined" element={<Combined />} />
+              {/* <Route path="/todo" element={<Todo />} /> */}
+              <Route path="/smarthome/:homeid" element={<SmartHome />} />
+              {/* <Route path="/combined" element={<Combined />} /> */}
             </Routes>
           </FlexBox>
         </div>
