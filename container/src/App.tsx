@@ -1,12 +1,12 @@
-import { setTheme } from '@ui5/webcomponents-base/dist/config/Theme';
+import { setTheme } from "@ui5/webcomponents-base/dist/config/Theme";
 import {
   Bar,
   Button,
   Dialog,
   DynamicPage,
-  FlexBox
+  FlexBox,
 } from "@ui5/webcomponents-react";
-import '@ui5/webcomponents-react/dist/Assets';
+import "@ui5/webcomponents-react/dist/Assets";
 import { useEffect, useState } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
@@ -23,7 +23,7 @@ function App() {
 
   useEffect(() => {
     setTheme("sap_horizon");
-  })
+  });
 
   return (
     <>
@@ -50,9 +50,10 @@ function App() {
           <FlexBox style={{ marginTop: "1rem", height: "35rem" }}>
             <Sidebar />
             <Routes>
-              {/* <Route path="/todo" element={<Todo />} /> */}
+              <Route path="/todo" element={<Todo />} />
               <Route path="/smarthome/:homeid" element={<SmartHome />} />
-              {/* <Route path="/combined" element={<Combined />} /> */}
+              <Route path="/combined" element={<Combined />} />
+              <Route path="/" element={<Navigate to="/todo" />} />
             </Routes>
           </FlexBox>
         </div>
