@@ -3,11 +3,9 @@ declare module "smarthome/SmartHomeApp" {
   export function mount(
     htmlElement: HTMLElement,
     callbacks: {
-      onNavigate: (pathname: string) => void;
+      onNavigate: ({ location }: Update) => void;
     }
-  ): {
-    onParentNavigate: (pathname: string) => void;
-  };
+  ): void;
 }
 
 declare module "welcomePage/WelcomePageApp" {

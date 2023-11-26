@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { mount } from "smarthome/SmartHomeApp";
 import history from "../router/history";
+import { Update } from "history";
 
 type Props = {};
 
@@ -10,23 +11,19 @@ const SmartHome = (props: Props) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  let onParentNavigate: ReturnType<typeof mount>["onParentNavigate"];
-
   useEffect(() => {
     console.log("mounting smarthome, current pathname is:");
     console.log(location.pathname);
-    const { onParentNavigate: navigateCallback } = mount(ref.current!, {
-      onNavigate: (pathname: string) => {
+    mount(ref.current!, {
+      onNavigate: ({ location: nextLocation }: Update) => {
         console.log("Container noticed navigation for location:");
-        console.log(location);
+        navigate(location.pathname + nextLocation.pathname);
       },
     });
-    
-    history.listen(()=>{
-      console.log("I am fucking heeeeeere")
-    })
-    // navigateCallback("somepath");
-    
+
+    // history.listen(() => {
+    //   console.log("I am fucking heeeeeere");
+    // });
   }, []);
 
   return <div ref={ref} />;

@@ -3,13 +3,14 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import CustomRouter from "./components/router/CustomRouter";
 import history from "./components/router/history";
+import { Update } from "history";
 
 const mount = (
   htmlElement: HTMLElement,
-  { onNavigate }: { onNavigate: ((pathname: string) => void) | undefined }
+  { onNavigate }: { onNavigate: ({ location }: Update) => void }
 ) => {
-  history.listen(() => {
-    console.log("aaaaaaaaand also fking heeeeeeeeeere");
+  history.listen((update: Update) => {
+    onNavigate(update);
   });
 
   const root = ReactDOM.createRoot(htmlElement);
@@ -32,7 +33,7 @@ const mount = (
 if (process.env.NODE_ENV === "development") {
   const devRoot = document.getElementById("dev-smarthome");
   if (devRoot) {
-    mount(devRoot, { onNavigate: undefined });
+    mount(devRoot, { onNavigate: () => {} });
   }
 }
 
