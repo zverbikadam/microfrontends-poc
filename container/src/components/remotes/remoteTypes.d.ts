@@ -5,7 +5,9 @@ declare module "smarthome/SmartHomeApp" {
     callbacks: {
       onNavigate: ({ location }: Update) => void;
     }
-  ): void;
+  ): {
+    onParentNavigate: ({ location }: Update) => void;
+  };
 }
 
 declare module "welcomePage/WelcomePageApp" {

@@ -52,7 +52,7 @@ function App() {
             <Routes>
               <Route path="/todo" element={<Todo />} />
               <Route path="/smarthome/*" element={<SmartHome />} />
-              <Route path="/combined" element={<Combined />} />
+              <Route path="/combined/*" element={<Combined />} />
               <Route path="/" element={<Navigate to="/todo" />} />
             </Routes>
           </FlexBox>

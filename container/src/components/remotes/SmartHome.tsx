@@ -12,18 +12,15 @@ const SmartHome = (props: Props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("mounting smarthome, current pathname is:");
-    console.log(location.pathname);
-    mount(ref.current!, {
+    const { onParentNavigate } = mount(ref.current!, {
       onNavigate: ({ location: nextLocation }: Update) => {
-        console.log("Container noticed navigation for location:");
-        navigate(location.pathname + nextLocation.pathname);
+        const { pathname } = nextLocation;
+        if (location.pathname !== location.pathname + pathname)
+          navigate(location.pathname + (pathname === "/" ? "" : pathname));
       },
     });
 
-    // history.listen(() => {
-    //   console.log("I am fucking heeeeeere");
-    // });
+    history.listen(onParentNavigate);
   }, []);
 
   return <div ref={ref} />;

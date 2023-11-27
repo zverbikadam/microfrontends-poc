@@ -6,9 +6,7 @@ import { ThemeProvider } from "@ui5/webcomponents-react";
 import CustomRouter from "./components/router/CustomRouter";
 import history from "./components/router/history";
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 
 root.render(
   <React.StrictMode>
